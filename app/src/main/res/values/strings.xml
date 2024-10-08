@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">NoteApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="convenience">Удобства</string>
+    <string name="notes">Notes</string>
+    <string name="organization">Организация</string>
+    <string name="sinchronization">Синхронизация</string>
+    <string name="desc_one">\tСоздайте заметку в два клика !Записывайте мысли, идеи и важные задачи многовенно.</string>
+    <string name="desc_two">Организуйте заметки по папкам и тегам. Легко находите нужную информацию в любое время.</string>
+    <string name="desc_three">Синхронизация на всех устройствах. Доступ к записям в любое время и в любом месте.</string>
+    <string name="note_home">Note_Home</string>
+    <string name="secondfragment">secondfragment</string>
+    <string name="skip">Пропустить</string>
+    <string name="start">Начать</string>
 </resources>
