@@ -1,12 +1,12 @@
 package com.example.noteapp.ui.fragment.note
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.noteapp.R
+import androidx.fragment.app.Fragment
 import com.example.noteapp.databinding.FragmentNoteBinding
+import com.example.noteapp.ui.utils.PreferenceHelper
 
 class NoteFragment : Fragment() {
 
@@ -22,6 +22,18 @@ class NoteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupListener()
+    }
+
+    private fun setupListener() = with(binding) {
+        val sharedPreferences = PreferenceHelper()
+        sharedPreferences.unit(requireContext())
+        btnSave.setOnClickListener {
+            val et = etEnter.text.toString().trim()
+            sharedPreferences.text = et
+            tvMeaning.text = et
+        }
+        tvMeaning.text = sharedPreferences.text
     }
 
     override fun onDestroyView() {

@@ -13,4 +13,6 @@
     <string name="secondfragment">secondfragment</string>
     <string name="skip">Пропустить</string>
     <string name="start">Начать</string>
+    <string name="enter_magic_word">Введите волшебное слово:</string>
+    <string name="save">Save</string>
 </resources>

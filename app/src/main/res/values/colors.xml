@@ -5,4 +5,11 @@
     <color name="black_fon">#0E0C0C</color>
     <color name="yellow_skip">#D88B02</color>
     <color name="btn_orange">#D88B02</color>
+    <color name="weak_white">#99FFFFFF</color>
+    <color name="blue">#03A9F4</color>
+    <color name="backgroundLight">#FFFFFF</color>
+    <color name="primaryColor">#6200EE</color>
+    <color name="primaryDarkColor">#3700B3</color>
+    <color name="accentColor">#03DAC5</color>
+    <color name="blueThemeBar">#3a6689</color>
 </resources>
