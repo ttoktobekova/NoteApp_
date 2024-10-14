@@ -3,7 +3,7 @@
     <style name="Base.Theme.NoteApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="colorPrimaryDark">@color/blueThemeBar</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="Theme.NoteApp" parent="Base.Theme.NoteApp" />

@@ -12,4 +12,15 @@
     <color name="primaryDarkColor">#3700B3</color>
     <color name="accentColor">#03DAC5</color>
     <color name="blueThemeBar">#3a6689</color>
+    <color name="black_fon_main">#0E0C0C</color>
+    <color name="gray">#B1B1B1</color>
+    <color name="bg_fon_item">#191818</color>
+    <color name="yellow">#D88B02</color>
+    <color name="black_fon_appbar">#131212</color>
+    <color name="gray_note">#B1B1B1</color>
+    <color name="black_gray">#0E0C0C</color>
+    <color name="orange_btn">#D88B02</color>
+    <color name="black_text">#B1B1B1</color>
+    <color name="data_gray">#E6E6E6</color>
+    <color name="et_gray">#8DB1B1B1</color>
 </resources>
