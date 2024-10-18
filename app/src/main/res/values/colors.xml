@@ -23,4 +23,7 @@
     <color name="black_text">#B1B1B1</color>
     <color name="data_gray">#E6E6E6</color>
     <color name="et_gray">#8DB1B1B1</color>
+    <color name="gray_btn">#191818</color>
+    <color name="btn_milk">#B7EBE4C9</color>
+    <color name="btn_red">#571818</color>
 </resources>
