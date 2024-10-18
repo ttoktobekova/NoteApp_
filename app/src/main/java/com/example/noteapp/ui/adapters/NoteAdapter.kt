@@ -5,10 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.noteapp.data.interface_on.OnClickItem
 import com.example.noteapp.data.models.NoteModel
 import com.example.noteapp.databinding.ItemNoteBinding
 
-class NoteAdapter : ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffUtilCallback()) {
+class NoteAdapter(private val onLongClick: OnClickItem, private val onClick: OnClickItem) :
+    ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -22,6 +24,14 @@ class NoteAdapter : ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffUtilCallb
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.onBind(getItem(position))
+        holder.itemView.setOnLongClickListener {
+            onLongClick.onLongClick(getItem(position))
+            true
+        }
+        holder.itemView.setOnClickListener {
+            onClick.onClick(getItem(position))
+        }
+
     }
 
     inner class ViewHolder(private val binding: ItemNoteBinding) :
