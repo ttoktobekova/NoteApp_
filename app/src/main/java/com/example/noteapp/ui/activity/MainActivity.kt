@@ -27,15 +27,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isView() {
-        if (!pref.isPlay) {
+        if (!pref.isShow()) {
             navController.navigate(R.id.onBoardFragment)
         } else {
             navController.navigate(R.id.noteFragment)
-        }
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.noteFragment) {
-                pref.isPlay = true
-            }
         }
     }
 
