@@ -4,21 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noteapp.R
+import com.example.noteapp.data.models.NoteModel
 import com.example.noteapp.databinding.FragmentNoteBinding
 import com.example.noteapp.ui.App
 import com.example.noteapp.ui.adapters.NoteAdapter
-import com.example.noteapp.ui.utils.PreferenceHelper
+import com.example.noteapp.ui.interFace.OnClickItem
 
-class NoteFragment : Fragment() {
+class NoteFragment : Fragment(), OnClickItem {
     private var _binding: FragmentNoteBinding? = null
     private val binding get() = _binding!!
-    private val noteAdapter = NoteAdapter()
+    private val noteAdapter = NoteAdapter(this, this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,8 +55,34 @@ class NoteFragment : Fragment() {
         }
     }
 
+    override fun onLongClick(noteModel: NoteModel) {
+
+            val builder = AlertDialog.Builder(requireContext())
+            with(builder) {
+                setTitle(getString(R.string.deleteNote))
+                setPositiveButton(R.string.delete) { _, _ ->
+                    App.appDatabase?.noteDao()?.deleteNote(noteModel)
+                    getData()
+                }
+                setNegativeButton(R.string.cancel) { dialog, _ ->
+                    dialog.cancel()
+                    getData()
+                }
+                show()
+            }
+            builder.create()
+        }
+
+
+    override fun onClick(noteModel: NoteModel) {
+        val action = NoteFragmentDirections.actionNoteFragmentToNoteDetailFragment(noteModel.id)
+        findNavController().navigate(action)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

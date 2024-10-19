@@ -23,4 +23,7 @@
     <string name="need_do">Нужно сделать:</string>
     <string name="thrity">30 мая</string>
     <string name="enter_text">Введите текст:</string>
+    <string name="delete">Удалить</string>
+    <string name="cancel">Выход</string>
+    <string name="deleteNote">Удалить заметку?</string>
 </resources>
