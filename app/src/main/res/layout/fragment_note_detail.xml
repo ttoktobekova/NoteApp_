@@ -7,6 +7,7 @@
     android:id="@+id/ll_noteDetailFragment"
     android:background="@color/black_gray"
     android:orientation="vertical"
+    android:id="@+id/ll_background"
     android:paddingHorizontal="16dp"
     tools:context=".ui.fragment.note.NoteDetailFragment">
 
@@ -63,6 +64,33 @@
         android:textColorHint="@color/et_gray" />
 
     <LinearLayout
+        android:layout_marginTop="320dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_gray"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            app:backgroundTint="@color/btn_gray"
+            app:cornerRadius="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_white"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="40dp"
+            app:backgroundTint="@color/btn_white"
+            app:cornerRadius="12dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_red"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            app:backgroundTint="@color/btn_red"
+            app:cornerRadius="12dp" />
+    </LinearLayout>
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"

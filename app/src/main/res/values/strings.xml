@@ -25,5 +25,7 @@
     <string name="delete_this_note">Удалить заметку?</string>
     <string name="enter_text">Введите текст:</string>
     <string name="delete">Удалить</string>
+    <string name="cancel">Выход</string>
+    <string name="deleteNote">Удалить заметку?</string>
     <string name="cancel">Отмена</string>
 </resources>
