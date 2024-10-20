@@ -29,8 +29,6 @@ class MainActivity : AppCompatActivity() {
     private fun isView() {
         if (!pref.isShow()) {
             navController.navigate(R.id.onBoardFragment)
-        } else {
-            navController.navigate(R.id.noteFragment)
         }
     }
 

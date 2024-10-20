@@ -1,8 +1,6 @@
 package com.example.noteapp.ui.fragment.note
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -22,7 +20,6 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import java.util.TimeZone
 
 class NoteDetailFragment : Fragment() {
     private var _binding: FragmentNoteDetailBinding? = null
@@ -47,6 +44,7 @@ class NoteDetailFragment : Fragment() {
         updateNote()
         setupButtons()
         updateDate()
+        updateDataYear()
         setupListeners()
     }
 
@@ -69,6 +67,18 @@ class NoteDetailFragment : Fragment() {
             val currentDate = dateFormat.format(Date())
             binding.tvTime.text = currentDate
         }
+        if (noteId != -1) {
+            val argsNote = App.appDatabase?.noteDao()?.getNoteById(noteId)
+            argsNote?.let { item ->
+                binding.etTitle.setText(item.text)
+                binding.etDescription.setText(item.description)
+            }
+        }
+    }
+
+    private fun updateDataYear() {
+        val currentDate = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
+        binding.tvTime.text = currentDate
     }
 
     private fun setupListeners() = with(binding) {
@@ -83,6 +93,13 @@ class NoteDetailFragment : Fragment() {
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                btnAddText.visibility =
+                    if (etTitle.text.isNotEmpty() && etDescription.text.isNotEmpty())
+                        View.VISIBLE
+                    else
+                        View.INVISIBLE
+            }
         }
 
         etTitle.addTextChangedListener(textWatcher)
@@ -100,6 +117,11 @@ class NoteDetailFragment : Fragment() {
                 } else {
                     App.appDatabase?.noteDao()?.insertNote(note)
                 }
+            if (noteId != -1) {
+                val updatedNote = NoteModel(title, description).apply { id = noteId }
+                App.appDatabase?.noteDao()?.updateNote(updatedNote)
+            } else {
+                App.appDatabase?.noteDao()?.insertNote(NoteModel(title, description))
             }
             findNavController().navigateUp()
         }

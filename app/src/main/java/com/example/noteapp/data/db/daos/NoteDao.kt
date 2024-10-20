@@ -7,6 +7,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import com.example.noteapp.data.models.BackgroundColor
 import com.example.noteapp.data.models.NoteModel
 
 @Dao
@@ -26,4 +27,9 @@ interface NoteDao {
 
     @Query("SELECT *FROM noteModel WHERE id =:id")
     fun getNoteById(id:Int):NoteModel?
+=======
+    @Query("SELECT*FROM noteModel Where id=:id")
+    fun getNoteById(id:Int):NoteModel?
+
+
 }

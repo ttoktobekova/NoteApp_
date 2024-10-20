@@ -6,12 +6,15 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.noteapp.data.interface_on.OnClickItem
 import com.example.noteapp.data.models.NoteModel
 import com.example.noteapp.databinding.ItemNoteBinding
 import com.example.noteapp.ui.interFace.OnClickItem
 
 class NoteAdapter(private val onClickLong: OnClickItem, private val onClick: OnClickItem
 ) : ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffUtilCallback()) {
+class NoteAdapter(private val onLongClick: OnClickItem, private val onClick: OnClickItem) :
+    ListAdapter<NoteModel, NoteAdapter.ViewHolder>(DiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -27,6 +30,7 @@ class NoteAdapter(private val onClickLong: OnClickItem, private val onClick: OnC
         holder.onBind(getItem(position))
         holder.itemView.setOnLongClickListener {
             onClickLong.onLongClick(getItem(position))
+            onLongClick.onLongClick(getItem(position))
             true
         }
         holder.itemView.setOnClickListener {
